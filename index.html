@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Firebase Web App</h1>
+<textarea  id="mainText" placeholder="Enter text here..."></textarea>
+<button id="submit" onclick="submit()" type="button">Click Me!</button>
+<p id="readFire">hentet fra firebase</p>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA6iXaXRVSiAIzCL8MtvqjmQTFClTFqVFM",
+    authDomain: "thingy-database.firebaseapp.com",
+    databaseURL: "https://thingy-database.firebaseio.com",
+    storageBucket: "thingy-database.appspot.com",
+    messagingSenderId: "1073598624290"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="index.js"></script>
+</body>
+</html>
