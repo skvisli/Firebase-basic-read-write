@@ -15,5 +15,14 @@ function submit(){
   var firebaseRef = firebase.database().ref('temperature');
   var messageText = mainText.value;
 
-  firebaseRef.set(messageText);
+  firebaseRef.set(messageText).then(successfull, failed);
+}
+
+//Actions for the .set() promise successfull or failed
+function successfull(){
+  window.alert('Data lagret!')
+}
+
+function failed(){
+  window.alert('En feil oppstod!')
 }
