@@ -2,16 +2,18 @@ var mainText = document.getElementById("mainText");
 var submitButton = document.getElementById("submitButton");
 var readFire = document.getElementById("readFire");
 
-var firebaseReadRef = firebase.database().ref().child("Text")
+//Read from Firebase
+var firebaseReadRef = firebase.database().ref("Text")
 
 firebaseReadRef.on('value', function(datasnapshot){
   readFire.innerText = datasnapshot.val();
 });
 
+//Write to Firebase
 function submit(){
 
-  var firebaseRef = firebase.database().ref();
+  var firebaseRef = firebase.database().ref('temperature');
   var messageText = mainText.value;
 
-  firebaseRef.push().set(messageText);
+  firebaseRef.set(messageText);
 }
