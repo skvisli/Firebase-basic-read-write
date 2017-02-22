@@ -15,14 +15,10 @@ function submit(){
   var firebaseRef = firebase.database().ref('temperature');
   var messageText = mainText.value;
 
-  firebaseRef.set(messageText).then(successfull, failed);
-}
-
-//Actions for the .set() promise successfull or failed
-function successfull(){
-  window.alert('Data saved')
-}
-
-function failed(){
-  window.alert('Error, data not saved')
+//Promise that either resolves or rejects
+  firebaseRef.set(messageText).then(function successfull(){
+      window.alert('Data saved');
+  }, function failed(){
+    window.alert('Error, data not saved');
+  });
 }
