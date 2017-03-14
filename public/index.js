@@ -19,6 +19,7 @@ function read(){
     firebaseRef.once('value').then((datasnapshot) => {
     readFire.innerText = 'The temperature is ' + datasnapshot.val() + ' degrees';
   }), (error) => {
+    // TODO: Handle error
     console.console.log(error.code);
   }
   }
@@ -26,9 +27,9 @@ function read(){
 
 //Write to Firebase
 function submit(){
-  if (signedInCheck()) {
+  if (true) {
       var messageText = mainText.value;
-      var firebaseRef = firebase.database().ref('users/' + userId);
+      var firebaseRef = firebase.database().ref();
       firebaseRef.set({temperature:messageText}).then(successfull, failed);
     }
 }
@@ -83,6 +84,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     var photoURL = user.photoURL;
     var isAnonymous = user.isAnonymous;
     userId = user.uid;
+    console.log(user.uid)
     var providerData = user.providerData;
     signedIn = true;
     snackbar("Logged in as " + email);
