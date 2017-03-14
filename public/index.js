@@ -8,11 +8,19 @@ var userId;
 
 //Read from Firebase
 function read(){
+  // if (signedInCheck()) {
+  //   var firebaseRef = firebase.database().ref('users/' + userId + '/temperature');
+  //   firebaseRef.once('value', function(datasnapshot){
+  //   readFire.innerText = 'The temperature is ' + datasnapshot.val() + ' degrees';
+  // });
+  // }
   if (signedInCheck()) {
     var firebaseRef = firebase.database().ref('users/' + userId + '/temperature');
-    firebaseRef.on('value', function(datasnapshot){
+    firebaseRef.once('value').then((datasnapshot) => {
     readFire.innerText = 'The temperature is ' + datasnapshot.val() + ' degrees';
-    });
+  }), (error) => {
+    console.console.log(error.code);
+  }
   }
 }
 
